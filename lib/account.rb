@@ -7,10 +7,10 @@ class Account
 
   def deposit(value, date)
     @balance += value
+    date_reformatted = date.gsub(/-/, '/')
     deposit_as_a_string = format_currency(value)
     balance_as_a_string = format_currency(@balance)
-
-    this_deposit = date + " || "+ deposit_as_a_string + " || || " + balance_as_a_string
+    this_deposit = date_reformatted + " || "+ deposit_as_a_string + " || || " + balance_as_a_string
     @transactions.push(this_deposit)
   end
 
