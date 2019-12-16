@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 require 'account'
 
 describe Account do
   let(:account) {Account.new}
   context 'create account' do
 
-    it 'has a nil balance when opened' do
-      expect(account.balance).to eq(0)
-    end
-    it 'has a deposit method which correctly updates the balance' do
-      account.deposit(10)
-      expect(account.balance).to eq(10)
+    it 'stores a deposit transaction and can print it' do
+      account.deposit(1000, "10/01/2012")
+      output = account.statement
+      expect(output).to include("10/01/2012 || 1000.00 || || 1000.00")
     end
   end
 end
