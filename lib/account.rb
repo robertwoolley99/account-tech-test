@@ -3,6 +3,7 @@ class Account
   def initialize
     @balance = 0
     @transactions = []
+    @transactions.push("date || credit || debit || balance")
   end
 
   def deposit(value, date)
@@ -10,7 +11,8 @@ class Account
     date_reformatted = date.gsub(/-/, '/')
     deposit_as_a_string = format_currency(value)
     balance_as_a_string = format_currency(@balance)
-    this_deposit = date_reformatted + " || "+ deposit_as_a_string + " || || " + balance_as_a_string
+    this_deposit = date_reformatted + " || "+ deposit_as_a_string + \
+    " || || " + balance_as_a_string
     @transactions.push(this_deposit)
   end
 
