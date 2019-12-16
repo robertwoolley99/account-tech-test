@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class Account
-  attr_reader :balance
   def initialize
     @balance = 0
     @transactions = []
-    @transactions.push("date || credit || debit || balance")
   end
 
   def deposit(value, date)
@@ -11,16 +11,29 @@ class Account
     date_reformatted = date.gsub(/-/, '/')
     deposit_as_a_string = format_currency(value)
     balance_as_a_string = format_currency(@balance)
-    this_deposit = date_reformatted + " || "+ deposit_as_a_string + \
-    " || || " + balance_as_a_string
+    this_deposit = date_reformatted + ' || ' + deposit_as_a_string + \
+                   ' || || ' + balance_as_a_string
     @transactions.push(this_deposit)
   end
 
+  def withdrawal(value, date)
+    @balance -= value
+    date_reformatted = date.gsub(/-/, '/')
+    withdrawal_as_a_string = format_currency(value)
+    balance_as_a_string = format_currency(@balance)
+    this_withdrawal = date_reformatted + ' || || ' + withdrawal_as_a_string + \
+                      ' || ' + balance_as_a_string
+    @transactions.push(this_withdrawal)
+  end
+
   def statement
-    output = ""
-    @transactions.each do |line_item|
-      output += line_item
+    array = ''
+    output = "date || credit || debit || balance \n"
+    @transactions.reverse.each do |line_item|
+      array += line_item
+      array += "\n"
     end
+    output += array
   end
 
   private
@@ -28,8 +41,7 @@ class Account
   def format_currency(input)
     output = input.to_s
     if input % 1 == 0
-      output += ".00"
+      output += '.00'
     end
   end
-
 end
