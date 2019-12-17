@@ -9,6 +9,8 @@ Run bundle install to update your local gems.
 
 rspec to run the unit tests.
 
+Simplecov is included - 100% test coverage is supplied.
+
 rubocop to check the code linting.
 
 To run the code from irb.
@@ -59,7 +61,7 @@ a) Converts dates from dashed format  (e.g. 31-12-12) to the required format (e.
 b) Converts currency (transaction value, balance) from a real/integer to a string and adds .00 to integers. (Does this by passing the details to a format_currency method). 
 c) Passes date and string formatted balance and transaction values (along with transaction type) to line\_formatter.
 
-Line\_formatter creates a variable  which is the transaction entry.  This is made up of:
+Line\_formatter creates a variable  which is the transaction entry.  This is made up of:    
   a) Date.   
   b) 'Middle bit of transaction' - either the deposit or withdrawal item along with padding and pipes.   
   c) Balance.
