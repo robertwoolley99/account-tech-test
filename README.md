@@ -61,6 +61,6 @@ Line\_formatter creates a variable  which is the transaction entry.  This is mad
   It is designed to be logical to use in terms of the methods selected.
   
 ##   Screenshot of Program In Use
-[Illustration here](https://github.com/robertwoolley99/account-tech-test/screenshot)
+[Illustration here](https://github.com/robertwoolley99/account-tech-test/screenshot.png)
   
 
