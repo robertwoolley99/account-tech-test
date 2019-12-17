@@ -34,5 +34,16 @@ describe Transactions do
     expect(test_withdrawal).to eq('08/09/1987 || || 500.00 || 756.06')
   end
 
-
+  context 'It writes transactions to the array correctly' do
+    it 'writes a deposit correctly' do
+      trans.output_writer('deposit', '01-01-2001', 345, 1720.34)
+      test_output = trans.ledger[0]
+      expect(test_output).to eq('01/01/2001 || 345.00 || || 1720.34')
+    end
+  end
+  it 'writes a withdrawal correctly' do
+    trans.output_writer('withdrawal', '08-09-1982', 327, 555.45)
+    test_output = trans.ledger[0]
+    expect(test_output).to eq('08/09/1982 || || 327.00 || 555.45')
+  end
 end

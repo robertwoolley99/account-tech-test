@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Although there is no formal front end, these tests are
+# defacto functional tests.
+
 require 'account'
 
 describe Account do
