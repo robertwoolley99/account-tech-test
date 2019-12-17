@@ -35,28 +35,38 @@ puts statement
 
 ## Approach
 
-The approach is to provide three public facing methods:  
+There are two objects defined:
+
+## Account
+This acts as the front end and is the one which the user deals with.  It contains the second object, Transactions.
+
+Account is lightweight and has three  public facing methods:  
 1. Statement.  
 2. Deposit.  
 3. Withdrawal.
 
-Statement prints a statement of transactions in reverse order entered along with a header showing what each column covers.
+Statement prints a statement of transactions in reverse order entered along with a header showing what each column covers.  It does this by iterating through the ledger array held in the Transactions object.
 
-Deposit and Withdrawal record deposit and withdrawal actions.  Each takes two arguments when called - the amount and date.  Each method adjusts the balance and then calls  a private method 'output_writer'.
+Deposit and Withdrawal record deposit and withdrawal actions.  Each takes two arguments when called - the amount and date.  Each method adjusts the balance and then calls a method withing Transactions, 'output_writer'.
 
+## Transactions
+Transactions holds details of transactions in an array - @ledger.  This is also set as attribute reader so Account can pull out details for statements.
 
-a) Converts dates in dashed format  (e.g. 31-12-12) to the required format (e.g. 31/12/12) (does this by passing the date to   'date\_reformat' method).   
+Transactions processes inbound transactions through output\_writer
+which does the following things:
+
+a) Converts dates from dashed format  (e.g. 31-12-12) to the required format (e.g. 31/12/12) (does this by passing the date to   'date\_reformat' method).   
 b) Converts currency (transaction value, balance) from a real/integer to a string and adds .00 to integers. (Does this by passing the details to a format_currency method). 
 c) Passes date and string formatted balance and transaction values (along with transaction type) to line\_formatter.
 
 Line\_formatter creates a variable  which is the transaction entry.  This is made up of:
   a) Date.   
-  b) 'Middle bit of transaction' - either the deposit or withdrawal item along with padding and pipes
+  b) 'Middle bit of transaction' - either the deposit or withdrawal item along with padding and pipes.   
   c) Balance.
   Line\_formatter returns this to output\_writer and sends this to @transactions which is the array which holds the transactions.
   
 ##   Structure
-  The code is structured into a series of methods which avoid repetition.
+  Each object has a series of methods which avoid repetition.
   
   It is designed to be logical to use in terms of the methods selected.
   
