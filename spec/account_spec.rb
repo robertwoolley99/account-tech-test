@@ -4,7 +4,7 @@ require 'account'
 
 describe Account do
   let(:account) { Account.new }
-  context 'transaction management' do
+  context 'deposits and withdrawals' do
     it 'stores a deposit transaction and can print it' do
       account.deposit(1000, '10-01-2012')
       output = account.statement
@@ -22,6 +22,17 @@ describe Account do
       account.withdrawal(500, '14-01-2012')
       output = account.statement
       expect(output).to include('14/01/2012 || || 500.00 || 2500.00')
+    end
+  end
+end
+
+describe Account do
+  let(:account) { Account.new }
+  context 'statements ' do
+    it 'has a header as requested' do
+      account.deposit(500, '25-12-2019')
+      output = account.statement
+      expect(output).to include('date || credit || debit || balance')
     end
   end
 end
