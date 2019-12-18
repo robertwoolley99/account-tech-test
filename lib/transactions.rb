@@ -2,7 +2,7 @@
 
 # Object to store and process transactions. Back end of application.
 # Using attribute reader for ledger as object is encapsulated inside
-# Account. 
+# Account.
 class Transactions
   attr_reader :ledger
 
