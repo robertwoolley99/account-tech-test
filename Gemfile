@@ -1,5 +1,4 @@
-# frozen_string_literal: true
 
-gem 'rubocop', require: false
 
-gem 'simplecov', require: false, group: :test
+
+gem "json", ">= 2.3.0"
